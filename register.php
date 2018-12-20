@@ -2,6 +2,7 @@
 include 'project/helper/connection.php';
 ?>
 
+
 <html class="no-js" lang="en">
 
 <head>
@@ -35,34 +36,79 @@ include 'project/helper/connection.php';
     <!-- login area start -->
     <div class="login-area login-s2">
         <div class="container">
-            <div class="login-box ptb--100">
-                <form action="project/process/actionAddUser" method="POST" enctype="multipart/form-data">
+            <div class="login-box ptb--20">
+                <form action="project/process/actionRegister.php" method="POST" enctype="multipart/form-data">
                     <div class="login-form-head">
                         <h4>Sign Up</h4>
-                        <p>Hello there, Sign up and Enjoy the deal</p>
+                        <p>Hello there, Sign Up and Enjoy the Deal</p>
                     </div>
                     <div class="login-form-body">
+                        <?php
+                            $query = "SELECT COUNT(id_customer) AS jumlah FROM customer";
+                            $result = mysqli_query($con,$query);
+                            $no = 1;
+
+                            while ($isi = mysqli_fetch_array($result)) {
+                                $jumlah = $isi['jumlah'];
+                            }
+                        ?>
                         <div class="form-gp">
-                            <label for="exampleInputName1">Username</label>
-                            <input type="text" id="exampleInputName1">
+                            <input type="hidden" name="id_customer" value="<?php echo $no+$jumlah ?>">
+                        </div>
+                        <?php
+                            $query = "SELECT COUNT(id_user) AS jumlah FROM user";
+                            $result = mysqli_query($con,$query);
+                            $no = 1;
+
+                            while ($isi = mysqli_fetch_array($result)) {
+                                $jumlah = $isi['jumlah'];
+                            }
+                        ?>
+                        <div class="form-gp">
+                            <input type="hidden" name="id_user" value="<?php echo $no+$jumlah ?>">
                         </div>
                         <div class="form-gp">
-                            <label for="exampleInputEmail1">Address</label>
-                            <input type="text" id="exampleInputEmail1">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="username" class="form-control">
                         </div>
                         <div class="form-gp">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" id="exampleInputPassword1">
+                            <label for="nama">Full Name</label>
+                            <input type="text" name="nama" id="nama" class="form-control">
                         </div>
                         <div class="form-gp">
-                            <label for="exampleInputPassword2">Confirm Password</label>
-                            <input type="password" id="exampleInputPassword2">
+                            <input type="file" name="gambar" id="gambar" class="form-control-file">
+                        </div>
+                        <div class="form-gp">
+                            <label for="alamat">Address</label>
+                            <input type="text" name="alamat" id="alamat" class="form-control">
+                        </div>
+                        <div class="row mb-4 rmber-area">
+                            <div class="col-6">
+                                <div class="custom-control custom-radio mr-sm-2">
+                                    <input type="radio" class="custom-control-input" name="jenis_kelamin" id="customControlAutosizing" value="laki-laki">
+                                    <label class="custom-control-label" for="customControlAutosizing">Male</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="custom-control custom-radio mr-sm-2">
+                                    <input type="radio" class="custom-control-input" name="jenis_kelamin" id="customControlAutosizing2" value="perempuan">
+                                    <label class="custom-control-label" for="customControlAutosizing2">Female</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-gp">
+                            <label for="no_telp">Phone</label>
+                            <input type="number" name="no_telp" id="no_telp" class="form-control">
+                        </div>
+                        <div class="form-gp">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" class="form-control">
                         </div>
                         <div class="submit-btn-area">
                             <button id="form_submit" type="submit">Submit <i class="ti-arrow-right"></i></button>
                         </div>
                         <div class="form-footer text-center mt-5">
-                            <p class="text-muted">Don't have an account? <a href="login.php">Sign in</a></p>
+                            <p class="text-muted">Do have an account? <a href="login.php">Sign in</a></p>
                         </div>
                     </div>
                 </form>

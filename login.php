@@ -50,20 +50,6 @@ include 'project/helper/connection.php';
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" name="password" id="exampleInputPassword1" required>
                         </div>
-                        <!-- <div class="row mb-4 rmber-area">
-                            <div class="col-6">
-                                <div class="custom-control custom-radio mr-sm-2">
-                                    <input type="radio" class="custom-control-input" name="select" id="customControlAutosizing" checked>
-                                    <label class="custom-control-label" for="customControlAutosizing">User</label>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="custom-control custom-radio mr-sm-2">
-                                    <input type="radio" class="custom-control-input" name="select" id="customControlAutosizing2">
-                                    <label class="custom-control-label" for="customControlAutosizing2">Admin</label>
-                                </div>
-                            </div>
-                        </div> -->
                         <div class="submit-btn-area">
                             <button id="form_submit" type="submit">Submit <i class="ti-arrow-right"></i></button>
                         </div>

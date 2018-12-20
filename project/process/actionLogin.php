@@ -26,7 +26,8 @@ if(!empty($_POST["username"]) || !empty($_POST["password"])) {
             $_SESSION["username"] = $username;
             $_SESSION["password"] = $password;
             $_SESSION["tipe_user"] = $tipe_user;
-            header("Location:../../landingUser.php"); // PERLU DIGANTI
+            $_SESSION["id_customer"] = $row["id_customer"];
+            header("Location:../../user.php"); // PERLU DIGANTI
         }
     } else {
         $error = urlencode("Username atau password salah!");

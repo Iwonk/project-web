@@ -141,10 +141,14 @@ include '../helper/connection.php';
                         <tbody>
                         <?php
                         $query = 
-                        "SELECT dp.id_detail, k.nama_kapal, rk.rute_kapal, dp.jadwal, dp.harga FROM detail_pelayaran dp, pelayaran p, kapal k, rute_kapal rk
+                        "SELECT dp.id_detail, k.nama_kapal, p1.pelabuhan1, p2.pelabuhan2, dp.jadwal, dp.harga
+                        FROM detail_pelayaran dp, pelayaran p, kapal k, rute_kapal rk, pelabuhan1 p1, pelabuhan2 p2
                         WHERE dp.id_pelayaran = p.id_pelayaran AND
                         p.id_kapal = k.id_kapal AND
-                        p.id_rute_kapal = rk.id_rute_kapal AND dp.deleted = 0
+                        p.id_rute_kapal = rk.id_rute_kapal AND
+                        rk.pelabuhan1 = p1.id_pelabuhan1 AND
+                        rk.pelabuhan2 = p2.id_pelabuhan2 AND
+                        dp.deleted = 0
                         ORDER BY dp.id_detail";
 
                         $result = mysqli_query($con, $query);
@@ -155,7 +159,7 @@ include '../helper/connection.php';
                                 echo "
                                 <tr>
                                     <td>" .$row["id_detail"]. "</td>
-                                    <td>" .$row["nama_kapal"]. " <br> ".$row['rute_kapal']."</td>
+                                    <td>" .$row["nama_kapal"]. " <br> ".$row['pelabuhan1']." - ".$row['pelabuhan2']."</td>
                                     <td>" .$row["jadwal"]. "</td>
                                     <td>" .$row["harga"]. "</td>
                                     <td>

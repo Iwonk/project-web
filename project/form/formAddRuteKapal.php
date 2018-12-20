@@ -49,8 +49,8 @@ include '../helper/connection.php';
                                     <li><a href="#" aria-expanded="true">Pesawat</a>
                                         <ul class="collapse">
                                             <li><a href="../display/displayMaskapai.php">Maskapai</a></li>
-                                            <li><a href="..//display/displayRute.php">Rute</a></li>
-                                            <li><a href="..//display/displayPenerbangan.php">Penerbangan</a></li>
+                                            <li><a href="../display/displayRute.php">Rute</a></li>
+                                            <li><a href="../display/displayPenerbangan.php">Penerbangan</a></li>
                                             <li><a href="../display/displayData.php">Data</a></li>
                                         </ul>
                                     </li>
@@ -121,14 +121,45 @@ include '../helper/connection.php';
                         <form action="../process/actionAddRuteKapal.php" method="POST" enctype="multipart/form-data">
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">ID</label>
-                                <div class="col-md-9">
+                                <div class="col-md-8">
                                     <input type="number" name="id_rute_kapal" id="id_rute_kapal" class="form-control" placeholder="ID Rute" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">Rute</label>
-                                <div class="col-md-9">
-                                    <input type="text" name="rute_kapal" id="rute_kapal" class="form-control" placeholder="Rute" required>
+                                <div class="col-md-4">
+                                    <select name="id_pelabuhan1" class="form-control">
+                                        <?php
+                                            $query = "SELECT * FROM pelabuhan1";
+                                            $result = mysqli_query($con, $query);
+
+                                            if (mysqli_num_rows($result) > 0){
+                                                while($row = mysqli_fetch_assoc($result))
+                                                {
+                                                    echo "
+                                                    <option value='".$row['id_pelabuhan1']."'>".$row['pelabuhan1']."</option>  
+                                                    ";
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <select name="id_pelabuhan2" class="form-control">
+                                        <?php
+                                            $query = "SELECT * FROM pelabuhan2";
+                                            $result = mysqli_query($con, $query);
+
+                                            if (mysqli_num_rows($result) > 0){
+                                                while($row = mysqli_fetch_assoc($result))
+                                                {
+                                                    echo "
+                                                    <option value='".$row['id_pelabuhan2']."'>".$row['pelabuhan2']."</option>  
+                                                    ";
+                                                }
+                                            }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row mt-5">
@@ -149,8 +180,7 @@ include '../helper/connection.php';
             </div>
             <script>
                 function clearForm() {
-                    $('#id_rute').val('');
-                    $('#rute_kapal').val('');
+                    $('#id_rute_kapal').val('');
                 }
             </script>
         </div>

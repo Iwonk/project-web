@@ -61,10 +61,10 @@ if(mysqli_num_rows($result) == 1) {
                                 <ul class="collapse">
                                     <li class="active"><a href="#" aria-expanded="true">Pesawat</a>
                                         <ul class="collapse">
-                                            <li><a href="project/display/displayMaskapai.php">Maskapai</a></li>
-                                            <li class="active"><a href="project/display/displayRute.php">Rute</a></li>
-                                            <li><a href="project/display/displayPenerbangan.php">Penerbangan</a></li>
-                                            <li><a href="project/display/displayData.php">Data</a></li>
+                                            <li><a href="../display/displayMaskapai.php">Maskapai</a></li>
+                                            <li class="active"><a href="../display/displayRute.php">Rute</a></li>
+                                            <li><a href="../display/displayPenerbangan.php">Penerbangan</a></li>
+                                            <li><a href="../display/displayData.php">Data</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#" aria-expanded="true">Kapal</a>
@@ -137,19 +137,60 @@ if(mysqli_num_rows($result) == 1) {
                             
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">Rute</label>
-                                <div class="col-md-9">
-                                    <input type="text" name="nama_rute" id="nama_rute" class="form-control" placeholder="Rute" required 
-                                    value="<?php echo $item["nama_rute"] ?>">
+                                <div class="col-md-4">
+                                    <select name="id_kota1" class="form-control">
+                                        <?php
+                                            $query = "SELECT * FROM kota1";
+                                            $result = mysqli_query($con, $query);
+                                            $coba = '';
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while($row = mysqli_fetch_assoc($result)) {
+                                                    if($item["kota1"] === $row["id_kota1"]) {
+                                                        $coba = 'selected';
+                                                    }
+                                                    else {
+                                                        $coba = '';
+                                                    }
+
+                                                    echo "
+                                                    <option value='".$row['id_kota1']."' ".$coba.">".$row['kota1']."</option>  
+                                                    ";
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <select name="id_kota2" class="form-control">
+                                        <?php
+                                            $query = "SELECT * FROM kota2";
+                                            $result = mysqli_query($con, $query);
+                                            $coba = '';
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while($row = mysqli_fetch_assoc($result)) {
+                                                    if($item["kota2"] === $row["id_kota2"]) {
+                                                        $coba = 'selected';
+                                                    }
+                                                    else {
+                                                        $coba = '';
+                                                    }
+
+                                                    echo "
+                                                    <option value='".$row['id_kota2']."' ".$coba.">".$row['kota2']."</option>  
+                                                    ";
+                                                }
+                                            }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row mt-5">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <a name="backBtn" id="backBtn" class="btn btn-dark btn-block" href="../display/displayRute.php" role="button">Kembali</a>
                                 </div>
-                                <div class="col-md-4">
-                                    <button name="clearFormBtn" id="clearFormBtn" class="btn btn-warning btn-block" role="button" onclick="clearForm()">Clear</button>
-                                </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <input type="submit" name="tambah" class="btn btn-success btn-block" value="Update"/>
                                 </div>
                             </div>
@@ -158,11 +199,6 @@ if(mysqli_num_rows($result) == 1) {
                     <div class="col-md-2"></div>
                 </div>
             </div>
-            <script>
-                function clearForm() {
-                    $('#nama_rute').val('');
-                }
-            </script>
         </div>
         <!-- main content area end -->
         <!-- footer area start-->

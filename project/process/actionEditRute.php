@@ -3,10 +3,10 @@
 include '../helper/connection.php';
 
 $id_rute = $_POST["id_rute"];
-$nama_rute = $_POST["nama_rute"];
+$id_kota1 = $_POST["id_kota1"];
+$id_kota2 = $_POST["id_kota2"];
 
-    $query = "UPDATE rute 
-    SET nama_rute = '$nama_rute' WHERE id_rute = $id_rute";
+    $query = "UPDATE rute SET kota1 = $id_kota1, kota2 = $id_kota2 WHERE id_rute = $id_rute";
 
     if (mysqli_query($con, $query)) {
         header("Location:../display/displayRute.php");

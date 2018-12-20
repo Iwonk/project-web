@@ -142,10 +142,13 @@ if(mysqli_num_rows($result) == 1) {
                             
                                     <?php
                                         $query = 
-                                        "select p.id_pelayaran, k.nama_kapal, rk.rute_kapal from pelayaran p, kapal k, rute_kapal rk
-                                        where p.id_kapal = k.id_kapal AND
-                                        p.id_rute_kapal = rk.id_rute_kapal AND
-                                        p.deleted = 0";
+                                        "SELECT p.id_pelayaran, k.nama_kapal, p1.pelabuhan1, p2.pelabuhan2 
+                                        FROM pelayaran p, kapal k, rute_kapal rk, pelabuhan1 p1, pelabuhan2 p2
+                                        WHERE p.id_rute_kapal = rk.id_rute_kapal AND
+                                        rk.pelabuhan1 = p1.id_pelabuhan1 AND
+                                        rk.pelabuhan2 = p2.id_pelabuhan2 AND
+                                        p.id_kapal = k.id_kapal AND
+                                        p.deleted=0";
 
                                         $result = mysqli_query($con, $query);
                                         $coba = '';
@@ -159,7 +162,7 @@ if(mysqli_num_rows($result) == 1) {
                                                     $coba = '';
                                                 }
                                                 echo "
-                                                <option value='".$row['id_pelayaran']."' ".$coba.">".$row['nama_kapal']." --  (".$row['rute_kapal'].")</option>  
+                                                <option value='".$row['id_pelayaran']."'>".$row['nama_kapal']." -- (".$row['pelabuhan1']." - ".$row['pelabuhan2'].")</option>  
                                                 ";
                                             }
                                         }

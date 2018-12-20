@@ -139,7 +139,14 @@ include '../helper/connection.php';
                         </thead>
                         <tbody>
                         <?php
-                        $query = "SELECT * FROM penerbangan p, maskapai m, rute r WHERE p.deleted=0 AND p.id_maskapai = m.id_maskapai AND p.id_rute = r.id_rute ORDER BY id_penerbangan";
+                        $query = "SELECT p.id_penerbangan, m.nama_maskapai, k1.kota1, k2.kota2 FROM penerbangan p,maskapai m, rute r, kota1 k1, kota2 k2
+                        WHERE p.id_maskapai = m.id_maskapai AND
+                        p.id_rute = r.id_rute AND
+                        r.kota1 = k1.id_kota1 AND
+                        r.kota2 = k2.id_kota2 AND
+                        p.deleted = 0
+                        ORDER BY m.nama_maskapai";
+
                         $result = mysqli_query($con, $query);
                         if (mysqli_num_rows($result) > 0){
                             while($row = mysqli_fetch_assoc($result)){
@@ -148,7 +155,7 @@ include '../helper/connection.php';
                                 <tr>
                                     <td>" .$row["id_penerbangan"]. "</td>
                                     <td>" .$row["nama_maskapai"]. "</td>
-                                    <td>" .$row["nama_rute"]. "</td>
+                                    <td>" .$row["kota1"]. " - ".$row["kota2"]."</td>
                                     <td>
                                         <a href='../form/formEditPenerbangan.php?id_penerbangan=$id_penerbangan' class='btn btn-warning'>Update</a>
                                         <a href='../process/actionDeletePenerbangan.php?id_penerbangan=$id_penerbangan' class='btn btn-danger'>Delete</a>

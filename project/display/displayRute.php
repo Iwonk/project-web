@@ -138,7 +138,8 @@ include '../helper/connection.php';
                         </thead>
                         <tbody>
                         <?php
-                        $query = "SELECT * FROM rute WHERE deleted=0 ORDER BY id_rute";
+                        $query = "SELECT r.id_rute, k1.kota1, k2.kota2 FROM rute r, kota1 k1, kota2 k2
+                        WHERE r.kota1 = k1.id_kota1 AND r.kota2 = k2.id_kota2 AND r.deleted = 0 ORDER BY r.id_rute";
                         $result = mysqli_query($con, $query);
 
                         if (mysqli_num_rows($result) > 0){
@@ -148,7 +149,7 @@ include '../helper/connection.php';
                                 <tr>
                                     <input type='hidden' name='id_rute' value='".$id_rute."'>
                                     <td>" .$row["id_rute"]. "</td>
-                                    <td>" .$row["nama_rute"]. "</td>
+                                    <td>" .$row["kota1"]. " - ".$row["kota2"]."</td>
                                     <td>
                                         <a href='../form/formEditRute.php?id_rute=$id_rute' class='btn btn-warning'>Update</a>
                                         <a href='../process/actionDeleteRute.php?id_rute=$id_rute' class='btn btn-danger'>Delete</a>

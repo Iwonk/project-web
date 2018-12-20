@@ -169,7 +169,8 @@ if(mysqli_num_rows($result) == 1) {
                                 <div class="col-md-9">
                                     <select name="id_rute" class="form-control">
                                         <?php
-                                        $query = "SELECT * FROM rute WHERE deleted=0";
+                                        $query = "SELECT * FROM rute r, kota1 k1, kota2 k2
+                                        WHERE r.kota1 = k1.id_kota1 AND r.kota2 = k2.id_kota2 AND r.deleted=0";
                                         $result = mysqli_query($con, $query);
 
                                         if (mysqli_num_rows($result) > 0){
@@ -182,7 +183,7 @@ if(mysqli_num_rows($result) == 1) {
                                                 }
 
                                                 echo "
-                                                <option value='".$row['id_rute']."' ".$coba.">".$row['nama_rute']."</option>  
+                                                <option value='".$row['id_rute']."' ".$coba.">".$row['kota1']." - ".$row['kota2']."</option>  
                                                 ";
                                             }
                                         }

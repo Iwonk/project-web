@@ -5,13 +5,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
-<link rel="stylesheet" type="text/css" href="styles/responsive.css">
+<link rel="stylesheet" type="text/css" href="user-index/styles/bootstrap4/bootstrap.min.css">
+<link href="user-index/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="user-index/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="user-index/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="user-index/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="user-index/styles/main_styles.css">
+<link rel="stylesheet" type="text/css" href="user-index/styles/responsive.css">
 </head>
 
 <body>
@@ -29,8 +29,8 @@
 				<div class="row">
 					<div class="col d-flex flex-row">	
 						<div class="user_box ml-auto">
-							<div class="user_box_login user_box_link"><a href="../login.php">login</a></div>
-							<div class="user_box_register user_box_link"><a href="../register.php">register</a></div>
+							<div class="user_box_login user_box_link"><a href="login.php">login</a></div>
+							<div class="user_box_register user_box_link"><a href="register.php">register</a></div>
 						</div>
 					</div>
 				</div>
@@ -44,7 +44,7 @@
 				<div class="row">
 					<div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
 						<div class="logo_container">
-							<div class="logo"><a href="#"><img src="images/logo.png" alt="">Tiket Travel</a></div>
+							<div class="logo"><a href="#"><img src="user-index/images/logo.png" alt="">Tiket Travel</a></div>
 						</div>
 					</div>
 				</div>
@@ -67,7 +67,7 @@
 				<!-- Slider Item -->
 				<div class="owl-item home_slider_item">
 					<!-- Image by https://unsplash.com/@anikindimitry -->
-					<div class="home_slider_background" style="background-image:url(images/brunei.jpg)"></div>
+					<div class="home_slider_background" style="background-image:url(user-index/images/bali.jpg)"></div>
 
 					<div class="home_slider_content text-center">
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
@@ -79,7 +79,7 @@
 
 				<!-- Slider Item -->
 				<div class="owl-item home_slider_item">
-					<div class="home_slider_background" style="background-image:url(images/batuan.jpg)"></div>
+					<div class="home_slider_background" style="background-image:url(user-index/images/jimbaran.jpg)"></div>
 
 					<div class="home_slider_content text-center">
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
@@ -91,7 +91,7 @@
 
 				<!-- Slider Item -->
 				<div class="owl-item home_slider_item">
-					<div class="home_slider_background" style="background-image:url(images/carribean.jpg)"></div>
+					<div class="home_slider_background" style="background-image:url(user-index/images/raja-ampat.jpg)"></div>
 
 					<div class="home_slider_content text-center">
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
@@ -159,41 +159,35 @@
 					<div class="search_tabs_container">
 						<div class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 							
-							<div class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/departure.png" alt="">flights</div>
-							<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/cruise.png" alt="">cruises</div>
+							<div class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="user-index/images/departure.png" alt="">penerbangan</div>
+							<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="user-index/images/cruise.png" alt="">pelayaran</div>
 						</div>		
 					</div>
 
 					<!-- Search Panel -->
 
 					<div class="search_panel active">
-						<form action="#" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+						<form action="single-listing-penerbangan.php?id_rute=<?php echo $id_rute; ?>" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 							<div class="search_item">
-								<div>destination</div>
-								<input type="text" class="destination search_input" required="required">
-							</div>
-							<div class="search_item">
-								<div>check in</div>
-								<input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-							</div>
-							<div class="search_item">
-								<div>check out</div>
-								<input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-							</div>
-							<div class="search_item">
-								<div>adults</div>
-								<select name="adults" id="adults_1" class="dropdown_item_select search_input">
-									<option>01</option>
-									<option>02</option>
-									<option>03</option>
-								</select>
-							</div>
-							<div class="search_item">
-								<div>children</div>
-								<select name="children" id="children_1" class="dropdown_item_select search_input">
-									<option>0</option>
-									<option>02</option>
-									<option>03</option>
+								<div>rute</div>
+								<select name="id_rute" id="id_rute" class="dropdown_item_select search_input">
+								<?php
+									include "project/helper/connection.php";
+									$query = "SELECT * FROM rute r, kota1 k1, kota2 k2
+									WHERE r.kota1 = k1.id_kota1 AND r.kota2 = k2.id_kota2 AND r.deleted=0";
+
+									$result = mysqli_query($con, $query);
+
+										if (mysqli_num_rows($result) > 0){
+											while($row = mysqli_fetch_assoc($result))
+											{
+												$id_rute = $row['id_rute'];
+												echo "
+												<option value='".$row['id_rute']."'>".$row['kota1']." - ".$row['kota2']. "</option>  
+												";
+											}
+										}
+									?>
 								</select>
 							</div>
 							<button class="button search_button">search<span></span><span></span><span></span></button>
@@ -203,33 +197,27 @@
 					<!-- Search Panel -->
 
 					<div class="search_panel">
-						<form action="#" id="search_form_3" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+						<form action="single-listing-pelayaran.php?id_rute_kapal=<?php echo $id_rute_kapal; ?>" id="search_form_2" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 							<div class="search_item">
-								<div>destination</div>
-								<input type="text" class="destination search_input" required="required">
-							</div>
-							<div class="search_item">
-								<div>check in</div>
-								<input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-							</div>
-							<div class="search_item">
-								<div>check out</div>
-								<input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-							</div>
-							<div class="search_item">
-								<div>adults</div>
-								<select name="adults" id="adults_3" class="dropdown_item_select search_input">
-									<option>01</option>
-									<option>02</option>
-									<option>03</option>
-								</select>
-							</div>
-							<div class="search_item">
-								<div>children</div>
-								<select name="children" id="children_3" class="dropdown_item_select search_input">
-									<option>0</option>
-									<option>02</option>
-									<option>03</option>
+								<div>rute</div>
+								<select name="id_rute_kapal" id="id_rute_kapal" class="dropdown_item_select search_input">
+								<?php
+									include "project/helper/connection.php";
+									$query = "SELECT * FROM rute_kapal rk, pelabuhan1 p1, pelabuhan2 p2
+									WHERE rk.pelabuhan1 = p1.id_pelabuhan1 AND rk.pelabuhan2 = p2.id_pelabuhan2 AND rk.deleted=0";
+									
+									$result = mysqli_query($con, $query);
+
+										if (mysqli_num_rows($result) > 0){
+											while($row = mysqli_fetch_assoc($result))
+											{
+												$id_rute_kapal = $row['id_rute_kapal'];
+												echo "
+												<option value='".$row['id_rute_kapal']."'>".$row['pelabuhan1']." - ".$row['pelabuhan2']. "</option>  
+												";
+											}
+										}
+									?>
 								</select>
 							</div>
 							<button class="button search_button">search<span></span><span></span><span></span></button>
@@ -258,12 +246,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 </div>
 
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="styles/bootstrap4/popper.js"></script>
-<script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="js/custom.js"></script>
+<script src="user-index/js/jquery-3.2.1.min.js"></script>
+<script src="user-index/styles/bootstrap4/popper.js"></script>
+<script src="user-index/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="user-index/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="user-index/plugins/easing/easing.js"></script>
+<script src="user-index/js/custom.js"></script>
 
 </body>
 

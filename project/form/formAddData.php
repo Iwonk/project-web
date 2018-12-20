@@ -132,17 +132,20 @@ include '../helper/connection.php';
                             
                                     <?php
                                         $query = 
-                                        "select p.id_penerbangan,m.nama_maskapai,r.nama_rute from penerbangan p,maskapai m,rute r
-                                        where p.id_maskapai = m.id_maskapai AND
-                                        p.id_rute = r.id_rute AND
-                                        p.deleted = 0";
+                                        "SELECT p.id_penerbangan, m.nama_maskapai, k1.kota1, k2.kota2 
+                                        FROM penerbangan p,maskapai m,rute r,kota1 k1, kota2 k2
+                                        WHERE p.id_rute = r.id_rute AND
+                                        r.kota1 = k1.id_kota1 AND
+                                        r.kota2 = k2.id_kota2 AND
+                                        p.id_maskapai = m.id_maskapai AND
+                                        p.deleted=0";
 
                                         $result = mysqli_query($con, $query);
 
                                         if (mysqli_num_rows($result) > 0){
                                             while($row = mysqli_fetch_assoc($result)) {
                                                 echo "
-                                                <option value='".$row['id_penerbangan']."'>".$row['nama_maskapai']." --  (".$row['nama_rute'].")</option>  
+                                                <option value='".$row['id_penerbangan']."'>".$row['nama_maskapai']." -- (".$row['kota1']." - ".$row['kota2'].")</option>  
                                                 ";
                                             }
                                         }

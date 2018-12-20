@@ -61,10 +61,10 @@ if(mysqli_num_rows($result) == 1) {
                                 <ul class="collapse">
                                     <li><a href="#" aria-expanded="true">Pesawat</a>
                                         <ul class="collapse">
-                                            <li><a href="project/display/displayMaskapai.php">Maskapai</a></li>
-                                            <li><a href="project/display/displayRute.php">Rute</a></li>
-                                            <li><a href="project/display/displayPenerbangan.php">Penerbangan</a></li>
-                                            <li><a href="project/display/displayData.php">Data</a></li>
+                                            <li><a href="../display/displayMaskapai.php">Maskapai</a></li>
+                                            <li><a href="../display/displayRute.php">Rute</a></li>
+                                            <li><a href="../display/displayPenerbangan.php">Penerbangan</a></li>
+                                            <li><a href="../display/displayData.php">Data</a></li>
                                         </ul>
                                     </li>
                                     <li class="active"><a href="#" aria-expanded="true">Kapal</a>
@@ -137,19 +137,60 @@ if(mysqli_num_rows($result) == 1) {
                             
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label">Rute</label>
-                                <div class="col-md-9">
-                                    <input type="text" name="rute_kapal" id="rute_kapal" class="form-control" placeholder="Rute" required 
-                                    value="<?php echo $item["rute_kapal"] ?>">
+                                <div class="col-md-4">
+                                    <select name="id_pelabuhan1" class="form-control">
+                                        <?php
+                                            $query = "SELECT * FROM pelabuhan1";
+                                            $result = mysqli_query($con, $query);
+                                            $coba = '';
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while($row = mysqli_fetch_assoc($result)) {
+                                                    if($item["pelabuhan1"] === $row["id_pelabuhan1"]) {
+                                                        $coba = 'selected';
+                                                    }
+                                                    else {
+                                                        $coba = '';
+                                                    }
+
+                                                    echo "
+                                                    <option value='".$row['id_pelabuhan1']."' ".$coba.">".$row['pelabuhan1']."</option>  
+                                                    ";
+                                                }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <select name="id_pelabuhan2" class="form-control">
+                                        <?php
+                                            $query = "SELECT * FROM pelabuhan2";
+                                            $result = mysqli_query($con, $query);
+                                            $coba = '';
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while($row = mysqli_fetch_assoc($result)) {
+                                                    if($item["pelabuhan2"] === $row["id_pelabuhan2"]) {
+                                                        $coba = 'selected';
+                                                    }
+                                                    else {
+                                                        $coba = '';
+                                                    }
+
+                                                    echo "
+                                                    <option value='".$row['id_pelabuhan2']."' ".$coba.">".$row['pelabuhan2']."</option>  
+                                                    ";
+                                                }
+                                            }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row mt-5">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <a name="backBtn" id="backBtn" class="btn btn-dark btn-block" href="../display/displayRuteKapal.php" role="button">Kembali</a>
                                 </div>
-                                <div class="col-md-4">
-                                    <button name="clearFormBtn" id="clearFormBtn" class="btn btn-warning btn-block" role="button" onclick="clearForm()">Clear</button>
-                                </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <input type="submit" name="tambah" class="btn btn-success btn-block" value="Update"/>
                                 </div>
                             </div>
@@ -158,11 +199,6 @@ if(mysqli_num_rows($result) == 1) {
                     <div class="col-md-2"></div>
                 </div>
             </div>
-            <script>
-                function clearForm() {
-                    $('#rute_kapal').val('');
-                }
-            </script>
         </div>
         <!-- main content area end -->
         <!-- footer area start-->

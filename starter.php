@@ -121,7 +121,7 @@ else
             <!-- page title area end -->
             <div class="main-content-inner">
                 <!-- MAIN CONTENT GOES HERE -->
-                
+                <h2><br>WELCOME TO TIKET TRAVEL ADMINISTRATOR</h2>
             </div>
         </div>
         <!-- main content area end -->
